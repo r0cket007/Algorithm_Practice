@@ -2,6 +2,7 @@
 This Repository contains different algorithm based CP problem.
 
 ## Sites Included
-- Codeforces
+- CODEFORCES
 - SPOJ ONLINE JUDGE
 - CODECHEF
+- HACKEREARTH
