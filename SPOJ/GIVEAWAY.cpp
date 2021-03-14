@@ -1,3 +1,23 @@
+
+// Link : https://www.spoj.com/problems/GIVEAWAY/
+/*
+
+INPUT 
+5
+1 2 3 4 5
+3
+0 1 5 10
+1 2 20
+0 1 3 10
+
+
+OUTPUT 
+0
+1
+
+CONCEPT: BINARY SEARCH , SQRT DECOMPOSITION 
+*/
+
 #include<bits/stdc++.h>
 #define int long long
 #define in  freopen( "input.txt","r",stdin ) ;
