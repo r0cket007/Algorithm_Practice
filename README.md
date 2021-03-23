@@ -6,4 +6,4 @@ This Repository contains different algorithm based CP problem.
 - SPOJ ONLINE JUDGE
 - CODECHEF
 - HACKEREARTH
-- GeeksforGeeks
+- GEEKS FOR GEEKS
