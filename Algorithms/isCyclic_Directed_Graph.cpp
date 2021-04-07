@@ -18,11 +18,15 @@ public:
 		adj = new std::vector<int>[ this->v ];
 		visited = new bool[ this->v ] ;
 		stack = new bool[ this->v ] ;
+		for( int i = 0 ; i < v ; i ++ )
+		{
+			visited[ i ] = false ;
+			stack[ i ] = false ;
+		}
 	}
 	bool addEdge( int s , int d )
 	{
 		adj[ s ].push_back( d ) ;
-		adj[ d ].push_back( s ) ;
 	}
 	bool isCyclic( int x )
 	{
@@ -40,9 +44,7 @@ public:
 				{
 					return true ;
 				}
-
 			}
-
 		}
 		stack[ v ] = false ;
 		return false ;
@@ -58,14 +60,11 @@ signed main( )
 	// cin >> testcases ;
 	while( testcases -- )
 	{
-	    Graph g(4);
+		cout << 1 ;
+	    Graph g(3);
 	    g.addEdge(0, 1);
 	    g.addEdge(0, 2);
-	    g.addEdge(1, 2);
-	    g.addEdge(2, 0);
-	    g.addEdge(2, 3);
-	    g.addEdge(3, 3);
-	    cout << ( g.isCyclic( 0 ) ? "YES" : "NO" );
+	    cout << ( g.isCyclic( 0 ) ? "YES5" : "NO" );
 	}
 	cerr << "SUCCESS\n" ;
 	return 0 ;
