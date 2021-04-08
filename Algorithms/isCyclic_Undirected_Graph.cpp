@@ -7,65 +7,68 @@ using namespace std ;
 
 class Graph
 {
-	int v ;
-	std::vector<int> *adj;
-	bool *visited ;
-	bool *stack ; 
+    int v ;
+    std::vector<int> *adj;
+    bool *visited ;
 public:
-	Graph( int v )
-	{
-		this->v = v ;
-		adj = new std::vector<int>[ this->v ];
-		visited = new bool[ this->v ] ;
-		stack = new bool[ this->v ] ;
-		for( int i = 0 ; i < v ; i ++ )
-		{
-			visited[ i ] = false ;
-			stack[ i ] = false ;
-		}
-	}
-	bool addEdge( int s , int d )
-	{
-		adj[ s ].push_back( d ) ;
-	}
-	bool isCyclic( int x )
-	{
-		if( !visited[ x ] )
-		{
-			visited[ x ] = true ;
-			stack[ x ] = true ;
-			for( auto i : adj[ x ] )
-			{
-				if( !visited[ i ] && isCyclic( i ) )
-				{
-					return true ;
-				}
-				else if( stack[ i ] == true)
-				{
-					return true ;
-				}
-			}
-		}
-		stack[ v ] = false ;
-		return false ;
-	}
+    Graph( int v )
+    {
+        this->v = v ;
+        adj = new std::vector<int>[ this->v ];
+        visited = new bool[ this->v ] ;
+        for( int i = 0 ; i < v ; i ++ )
+        {
+            visited[ i ] = false ;
+        }
+    }
+    bool addEdge( int s , int d )
+    {
+        adj[ s ].push_back( d ) ;
+        adj[ d ].push_back( s ) ;
+    } 
+    bool isCyclic( int x , int parent = -1 )
+    {
+
+        visited[ x ] = true ;
+        for( auto i : adj[ x ] )
+        {
+            if( !visited[ i ]  )
+            {
+                if( isCyclic( i , x ) ) 
+                    return true ;
+            }
+            else if( parent != i )
+            {
+                return true ;
+            }
+        }
+        return false ;
+    }
 };
 
 signed main( )
 {
-	#ifndef ONLINE_JUDGE
+    #ifndef ONLINE_JUDGE
     r0cket007
     #endif
-	int testcases = 1 ;
-	// cin >> testcases ;
-	while( testcases -- )
-	{
-		cout << 1 ;
-	    Graph g(3);
-	    g.addEdge(0, 1);
-	    g.addEdge(0, 2);
-	    cout << ( g.isCyclic( 0 ) ? "YES" : "NO" );
-	}
-	cerr << "SUCCESS\n" ;
-	return 0 ;
+    int testcases = 1 ;
+    // cin >> testcases ;
+    while( testcases -- )
+    {
+        // cout << 1 ;
+        Graph g1(5);
+        g1.addEdge(1, 0);
+        g1.addEdge(0, 2);
+        g1.addEdge(2, 1);
+        g1.addEdge(0, 3);
+        g1.addEdge(3, 4);
+        cout << ( g1.isCyclic( 0 ) ? "YES" : "NO" );
+        cout << endl ;
+        Graph g2(3);
+        g2.addEdge(0, 1);
+        g2.addEdge(1, 2);
+        cout << ( g2.isCyclic( 0 ) ? "YES" : "NO" );
+    }
+    cerr << "SUCCESS\n" ;
+    return 0 ;
 }
