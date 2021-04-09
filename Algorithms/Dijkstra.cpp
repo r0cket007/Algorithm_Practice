@@ -30,7 +30,7 @@ void dijsktra( int graph[][V] , int src )
         i = INT_MAX ;
     }
     distance[ 0 ] = 0;
-    for( int i = 0 ; i < V ; i ++ ) 
+    for( int i = 0 ; i < V - 1 ; i ++ ) 
     {
         int s = find_min( distance , visited ) ;
         for( int j = 0 ; j < V ; j ++ )
