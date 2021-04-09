@@ -21,7 +21,7 @@ int find_min( int distance[ ] , bool visited[ ] )
 }
 
 
-void dijsktra( int graph[][V] , int src )
+void dijkstra( int graph[][V] , int src )
 {
     int distance[ V ] = { 0 };
     bool visited[ V ] = { 0 } ;
@@ -64,7 +64,7 @@ signed main( )
                         { 0, 0, 0, 0, 0, 2, 0, 1, 6 },
                         { 8, 11, 0, 0, 0, 0, 1, 0, 7 },
                         { 0, 0, 2, 0, 0, 0, 6, 7, 0 } };
-    dijisktra( graph , 0 ) ;
+    dijkstra( graph , 0 ) ;
     }
     cerr << "SUCCESS\n" ;
     return 0 ;
